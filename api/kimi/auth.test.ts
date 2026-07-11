@@ -1,17 +1,17 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("../queries/users", () => ({
+vi.mock("../queries/users.js", () => ({
   findUserByUnionId: vi.fn(),
   upsertUser: vi.fn(),
 }));
 
-vi.mock("./platform", () => ({
+vi.mock("./platform.js", () => ({
   users: {
     getProfile: vi.fn(),
   },
 }));
 
-vi.mock("./session", () => ({
+vi.mock("./session.js", () => ({
   signSessionToken: vi.fn(),
   verifySessionToken: vi.fn(),
 }));
@@ -27,6 +27,6 @@ afterEach(() => {
 
 describe("kimi auth bootstrap", () => {
   it("does not throw when Kimi env vars are missing", async () => {
-    await expect(import("./auth")).resolves.toBeDefined();
+    await expect(import("./auth.js")).resolves.toBeDefined();
   });
 });

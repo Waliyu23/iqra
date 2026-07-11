@@ -1,5 +1,5 @@
-import { getDb } from "../api/queries/connection";
-import { categories, products } from "./schema";
+import { getDb } from "../api/queries/connection.js";
+import { categories, products } from "./schema.js";
 
 async function seed() {
   const db = getDb();

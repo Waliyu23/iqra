@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { createRouter, publicQuery } from "./middleware";
-import { getDb } from "./queries/connection";
-import { cartItems, products } from "@db/schema";
+import { createRouter, publicQuery } from "./middleware.js";
+import { getDb } from "./queries/connection.js";
+import { cartItems, products } from "../db/schema.js";
 import { eq, and, sql } from "drizzle-orm";
 
 export const cartRouter = createRouter({
