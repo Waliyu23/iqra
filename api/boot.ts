@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { bodyLimit } from "hono/body-limit";
 import type { HttpBindings } from "@hono/node-server";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
-import { appRouter } from "./router.js";
+import { appRouter } from "../server/router.js";
 import { createContext } from "../server/context.js";
 import { env } from "../server/lib/env.js";
 import { createOAuthCallbackHandler } from "../server/kimi/auth.js";
