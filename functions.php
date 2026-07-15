@@ -59,6 +59,24 @@ function iqra_seed_product_categories() {
 }
 add_action('init', 'iqra_seed_product_categories', 20);
 
+function iqra_allow_rest_cors($served, $result, $request, $server) {
+    $origin = get_http_origin();
+    if ($origin) {
+        header('Access-Control-Allow-Origin: ' . esc_url_raw($origin));
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, X-WP-Nonce');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
+        header('Vary: Origin');
+    } else {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, X-WP-Nonce');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    }
+
+    return $served;
+}
+add_filter('rest_pre_serve_request', 'iqra_allow_rest_cors', 10, 4);
+
 function iqra_register_product_meta() {
     $fields = array(
         'iqra_price' => 'number',
