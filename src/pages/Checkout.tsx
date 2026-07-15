@@ -29,7 +29,7 @@ export default function Checkout() {
     showToast("Order details sent to WhatsApp", "success");
   };
 
-  const whatsappLink = `https://wa.me/2333556600270?text=${encodeURIComponent(`Hello Iqra Bookshop, I would like to place/manage my order.\n\nCustomer details:\n- Name: ${name}\n- Phone: ${phone}\n- Email: ${email || "None"}\n- Address: ${address}\n- Notes: ${notes || "None"}\n\nOrder summary:\n${cart.map((item) => `- ${item.product.name} x${item.quantity}`).join("\n")}\n\nTotal: GH₵${total.toFixed(2)}\n\nPlease help arrange payment and delivery.`)}`;
+  const whatsappLink = `https://wa.me/233556600270?text=${encodeURIComponent(`Hello Iqra Bookshop, I would like to place/manage my order.\n\nCustomer details:\n- Name: ${name}\n- Phone: ${phone}\n- Email: ${email || "None"}\n- Address: ${address}\n- Notes: ${notes || "None"}\n\nOrder summary:\n${cart.map((item) => `- ${item.product.name} x${item.quantity}`).join("\n")}\n\nTotal: GH₵${total.toFixed(2)}\n\nPlease help arrange payment and delivery.`)}`;
 
   if (cart.length === 0) {
     return (
@@ -91,7 +91,7 @@ export default function Checkout() {
 
             <div className="mt-6 rounded-2xl bg-[#f8f9fa] p-4 text-sm text-[#666]">
               <p className="font-medium text-[#111]">Need help?</p>
-              <p className="mt-2">Contact us at <span className="font-semibold text-[#1a9e7f]">+2333556600270</span> for order support.</p>
+              <p className="mt-2">Contact us at <span className="font-semibold text-[#1a9e7f]">+233 556 600 270</span> for order support.</p>
             </div>
           </div>
 
