@@ -1,6 +1,6 @@
-import { authRouter } from "./auth-router.js";
-import { productRouter } from "./product-router.js";
-import { cartRouter } from "./cart-router.js";
+import { authRouter } from "../api/auth-router.js";
+import { productRouter } from "../api/product-router.js";
+import { cartRouter } from "../api/cart-router.js";
 import { createRouter, publicQuery } from "./middleware.js";
 
 export const appRouter = createRouter({

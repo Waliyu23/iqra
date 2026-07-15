@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { createRouter, publicQuery } from "./middleware.js";
-import { getDb } from "./queries/connection.js";
+import { createRouter, publicQuery } from "../server/middleware.js";
+import { getDb } from "../server/queries/connection.js";
 import { cartItems, products } from "../db/schema.js";
 import { eq, and, sql } from "drizzle-orm";
 

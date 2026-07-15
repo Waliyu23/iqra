@@ -27,6 +27,6 @@ afterEach(() => {
 
 describe("kimi auth bootstrap", () => {
   it("does not throw when Kimi env vars are missing", async () => {
-    await expect(import("./auth.js")).resolves.toBeDefined();
+    await expect(import("../server/kimi/auth.js")).resolves.toBeDefined();
   });
 });

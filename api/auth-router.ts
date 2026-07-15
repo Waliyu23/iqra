@@ -1,7 +1,7 @@
 import * as cookie from "cookie";
 import { Session } from "../contracts/constants.js";
-import { getSessionCookieOptions } from "./lib/cookies.js";
-import { createRouter, authedQuery } from "./middleware.js";
+import { getSessionCookieOptions } from "../server/lib/cookies.js";
+import { createRouter, authedQuery } from "../server/middleware.js";
 
 export const authRouter = createRouter({
   me: authedQuery.query((opts) => opts.ctx.user),
