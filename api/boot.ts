@@ -20,6 +20,25 @@ app.use("/api/trpc/*", async (c) => {
     createContext,
   });
 });
+
+app.get("/api/catalog/products", async (c) => {
+  const response = await fetch(`${env.wordpressApiUrl.replace(/\/$/, "")}${env.wordpressProductsEndpoint}`);
+  if (!response.ok) {
+    return c.json({ error: "Failed to load products" }, response.status);
+  }
+
+  return c.json(await response.json());
+});
+
+app.get("/api/catalog/categories", async (c) => {
+  const response = await fetch(`${env.wordpressApiUrl.replace(/\/$/, "")}${env.wordpressCategoriesEndpoint}`);
+  if (!response.ok) {
+    return c.json({ error: "Failed to load categories" }, response.status);
+  }
+
+  return c.json(await response.json());
+});
+
 app.all("/api/*", (c) => c.json({ error: "Not Found" }, 404));
 
 export default app;

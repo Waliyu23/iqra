@@ -11,20 +11,12 @@ const fallbackCatalog: CatalogPayload = {
   categories: [],
 };
 
-function envValue(name: string): string {
-  return import.meta.env[name] ?? "";
-}
-
-function getBaseUrl() {
-  return envValue("VITE_WORDPRESS_API_URL").replace(/\/$/, "");
-}
-
 function getProductsEndpoint() {
-  return envValue("VITE_WORDPRESS_PRODUCTS_ENDPOINT") || "/wp-json/iqra/v1/products";
+  return "/api/catalog/products";
 }
 
 function getCategoriesEndpoint() {
-  return envValue("VITE_WORDPRESS_CATEGORIES_ENDPOINT") || "/wp-json/iqra/v1/categories";
+  return "/api/catalog/categories";
 }
 
 function slugify(value: string) {
@@ -138,15 +130,9 @@ function emitCatalogUpdate() {
 export async function loadCatalog(force = false) {
   if (!force && loadPromise) return loadPromise;
 
-  const baseUrl = getBaseUrl();
-  if (!baseUrl) {
-    cachedCatalog = fallbackCatalog;
-    return cachedCatalog;
-  }
-
   loadPromise = Promise.all([
-    fetch(`${baseUrl}${getProductsEndpoint()}`),
-    fetch(`${baseUrl}${getCategoriesEndpoint()}`),
+    fetch(getProductsEndpoint()),
+    fetch(getCategoriesEndpoint()),
   ])
     .then(async ([productsResponse, categoriesResponse]) => {
       if (!productsResponse.ok) throw new Error(`Catalog request failed with ${productsResponse.status}`);
