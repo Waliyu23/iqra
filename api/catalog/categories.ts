@@ -1,9 +1,9 @@
-import { env } from "../../server/lib/env.js";
+import { catalogEnv } from "./env.js";
 
 export default async function handler(_req: unknown, res: any) {
   try {
     const response = await fetch(
-      `${env.wordpressApiUrl.replace(/\/$/, "")}${env.wordpressCategoriesEndpoint}`
+      `${catalogEnv.wordpressApiUrl.replace(/\/$/, "")}${catalogEnv.wordpressCategoriesEndpoint}`
     );
 
     if (!response.ok) {
